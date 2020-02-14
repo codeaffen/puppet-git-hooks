@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "x$SKIP_LINT" != "x" ]; then
+    echo "SKIP_LINT set in environment, skipping Puppet syntax checks"
+    exit
+fi
+
 TERM=${TERM:-unknown}; export TERM
 
 git_root=$(git rev-parse --show-toplevel)
