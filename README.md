@@ -57,10 +57,10 @@ $ cat .git
 $ ln -s /path/to/this/repo/puppet-git-hooks/pre-commit ../path/to/git/dir/from/previous/command/hooks/pre-commit
 ```
 
-deploy-git-hook
+puppet-deploy-git-hooks
 ===============
 
-  usage: deploy-git-hook -d /path/to/git/repository [-a] [-c] [-r] [-u]
+  usage: puppet-deploy-git-hooks -d /path/to/git/repository [-a] [-c] [-r] [-u]
 
     -h            this help screen
     -d path       install the hooks to the specified path
@@ -76,15 +76,15 @@ deploy-git-hook
 
   1) to install pre-commit and pre-receive the hooks to foo git repo:
 
-    deploy-git-hook -d /path/to/foo -a
+    puppet-deploy-git-hooks -d /path/to/foo -a
 
   2) to install only the pre-commit hook to bar git repo:
 
-    deploy-git-hook -d /path/to/bar -c
+    puppet-deploy-git-hooks -d /path/to/bar -c
 
   3) to install only the pre-commit and pre-receive hook to foobar git repo:
 
-    deploy-git-hook -d /path/to/foobar -c -r
+    puppet-deploy-git-hooks -d /path/to/foobar -c -r
 
 In a wrapper
 ===============
