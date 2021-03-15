@@ -155,6 +155,23 @@ while read -r oldrev newrev refname; do
                 echo "puppet-lint not installed. Skipping puppet-lint tests..."
             fi
         fi
+
+        # g10k validation
+        if [[ "$CHECK_G10K" != "disabled" ]] ; then
+          if hash g10k >/dev/null 2>&1; then
+            if [[ "$changedfile" = "Puppetfile" ]]; then
+              printf "running g10k validation on $tmptree/Puppetfile... "
+              if g10k -validate -puppetfilelocation "$tmptree/Puppetfile"; then
+                echo "ok"
+              else
+                failures=$((failures + 1))
+              fi
+            fi
+          else
+            echo "g10k not installed. Skipping g10k Puppetfile test..."
+          fi
+        fi
+
         #r10k puppetfile syntax check
         if [[ "$CHECK_R10K" != "disabled" ]] ; then
           if hash r10k >/dev/null 2>&1; then
